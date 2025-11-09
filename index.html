@@ -3,52 +3,304 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jaikishan’s Assignment Portal</title>
+  <meta name="description" content="Assignment Hub - A modern portal for organizing engineering assignments with PDF preview, dark mode, and smart filtering." />
+  <meta name="author" content="Rishabh Dhami" />
+  <meta name="keywords" content="assignments, engineering, SPPU, student portal, PDF viewer" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Assignment Hub by Rishabh Dhami" />
+  <meta property="og:description" content="Modern assignment management portal for engineering students" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rishabhdhami.github.io/Assignments/" />
+  
+  <title>Assignment Hub - Rishabh Dhami | SPPU Engineering</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-in-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-slow': 'bounce 2s infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body id="body" class="bg-gray-100 text-gray-800 transition-all duration-500">
+<body id="body" class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-800 dark:text-gray-100 transition-all duration-500 min-h-screen">
 
-  <!-- Header -->
-  <header class="bg-blue-600 text-white py-5 shadow-md text-center">
-    <h1 class="text-2xl font-bold">📘 Jaikishan’s Assignment Portal</h1>
-    <button id="themeToggle" class="absolute top-4 right-4 bg-white text-blue-600 px-3 py-1 rounded-md">
-      🌙 Dark Mode
-    </button>
+  <!-- Header with Glassmorphism -->
+  <header class="glass-effect sticky top-0 z-40 backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 shadow-lg border-b border-white/20 dark:border-gray-700/30">
+    <div class="container mx-auto px-4 py-4 md:py-5">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <!-- Logo & Title -->
+        <div class="flex items-center gap-3 animate-fade-in">
+          <div class="text-4xl md:text-5xl transform hover:scale-110 transition-transform duration-300">📚</div>
+          <div>
+            <h1 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+              Assignment Hub
+            </h1>
+            <p class="text-xs md:text-sm text-gray-600 dark:text-gray-400">by Rishabh Dhami • SPPU</p>
+          </div>
+        </div>
+        
+        <!-- Stats & Theme Toggle -->
+        <div class="flex items-center gap-3 md:gap-4">
+          <!-- Quick Stats -->
+          <div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-100/50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800">
+            <span class="text-2xl">📊</span>
+            <div class="text-left">
+              <p class="text-xs text-gray-600 dark:text-gray-400">Total</p>
+              <p id="headerTotal" class="text-lg font-bold text-blue-600 dark:text-blue-400">0</p>
+            </div>
+          </div>
+          
+          <!-- Theme Toggle Button -->
+          <button id="themeToggle" 
+                  class="px-4 py-2 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg
+                         bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700"
+                  aria-label="Toggle theme">
+            <span id="themeIcon" class="text-xl">🌙</span>
+            <span id="themeText" class="ml-2 hidden md:inline">Dark</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- Controls -->
-  <div class="flex justify-center mt-6 mb-4 gap-4 flex-wrap">
-    <input id="searchBox" type="text" placeholder="Search assignment..." class="border border-gray-300 rounded-lg px-3 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-400">
-    <select id="subjectFilter" class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-      <option value="all">All Subjects</option>
-    </select>
-  </div>
+  <!-- Statistics Dashboard -->
+  <section class="container mx-auto px-4 py-6 md:py-8 animate-slide-up">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <!-- Total Assignments -->
+      <div class="stat-card group">
+        <div class="stat-icon bg-gradient-to-br from-blue-500 to-blue-600">
+          <span class="text-3xl">📚</span>
+        </div>
+        <div>
+          <p class="stat-label">Total</p>
+          <p id="totalCount" class="stat-value">0</p>
+        </div>
+      </div>
+      
+      <!-- Favorites -->
+      <div class="stat-card group">
+        <div class="stat-icon bg-gradient-to-br from-yellow-500 to-orange-500">
+          <span class="text-3xl">⭐</span>
+        </div>
+        <div>
+          <p class="stat-label">Favorites</p>
+          <p id="favCount" class="stat-value">0</p>
+        </div>
+      </div>
+      
+      <!-- Subjects -->
+      <div class="stat-card group">
+        <div class="stat-icon bg-gradient-to-br from-green-500 to-emerald-600">
+          <span class="text-3xl">📝</span>
+        </div>
+        <div>
+          <p class="stat-label">Subjects</p>
+          <p id="subjectCount" class="stat-value">0</p>
+        </div>
+      </div>
+      
+      <!-- Completed -->
+      <div class="stat-card group">
+        <div class="stat-icon bg-gradient-to-br from-purple-500 to-pink-600">
+          <span class="text-3xl">✅</span>
+        </div>
+        <div>
+          <p class="stat-label">Completed</p>
+          <p id="completedCount" class="stat-value">0</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Container -->
-  <main id="container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6"></main>
+  <!-- Search & Filter Controls -->
+  <section class="container mx-auto px-4 py-4">
+    <div class="glass-effect rounded-2xl p-4 md:p-6 space-y-4">
+      <!-- Search Bar -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <span class="text-2xl">🔍</span>
+        </div>
+        <input 
+          id="searchBox" 
+          type="text" 
+          placeholder="Search assignments by title or subject..." 
+          class="w-full pl-14 pr-4 py-3 md:py-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400
+                 transition-all duration-300 text-base md:text-lg"
+          aria-label="Search assignments"
+        />
+      </div>
+      
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-3">
+        <!-- Subject Filter -->
+        <select 
+          id="subjectFilter" 
+          class="flex-1 min-w-[150px] px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Filter by subject">
+          <option value="all">📚 All Subjects</option>
+        </select>
+        
+        <!-- Status Filter -->
+        <select 
+          id="statusFilter" 
+          class="flex-1 min-w-[150px] px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Filter by status">
+          <option value="all">📊 All Status</option>
+          <option value="completed">✅ Completed</option>
+          <option value="pending">⏳ Pending</option>
+        </select>
+        
+        <!-- View Filter -->
+        <select 
+          id="viewFilter" 
+          class="flex-1 min-w-[150px] px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Filter view">
+          <option value="all">📄 All Assignments</option>
+          <option value="favorites">⭐ Favorites Only</option>
+        </select>
+        
+        <!-- Sort -->
+        <select 
+          id="sortBy" 
+          class="flex-1 min-w-[150px] px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100
+                 focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400
+                 transition-all duration-300 cursor-pointer"
+          aria-label="Sort assignments">
+          <option value="default">🔤 Default Order</option>
+          <option value="title-asc">🔤 Title (A-Z)</option>
+          <option value="title-desc">🔥 Title (Z-A)</option>
+          <option value="subject-asc">📚 Subject (A-Z)</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assignments Grid -->
+  <main id="container" class="container mx-auto px-4 py-6 md:py-8">
+    <div id="assignmentsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <!-- Assignments will be dynamically inserted here -->
+    </div>
+    
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden text-center py-16">
+      <div class="text-8xl mb-4 animate-bounce-slow">🔍</div>
+      <h3 class="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">No assignments found</h3>
+      <p class="text-gray-600 dark:text-gray-400">Try adjusting your filters or search term</p>
+    </div>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-blue-600 text-white text-center py-3 mt-6">
-    © 2025 Jaikishan’s Assignment Portal
+  <footer class="glass-effect mt-12 py-6 md:py-8 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-sm md:text-base text-gray-600 dark:text-gray-400">
+        <p>Made with <span class="text-red-500 animate-pulse">❤️</span> by <strong class="text-blue-600 dark:text-blue-400">Rishabh Dhami</strong></p>
+        <span class="hidden md:inline">•</span>
+        <p>SPPU Engineering - Second Year</p>
+        <span class="hidden md:inline">•</span>
+        <p>© 2025 Assignment Hub</p>
+      </div>
+      <div class="mt-3">
+        <a href="https://github.com/RishabhDhami/Assignments" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+          <span>🐛</span>
+          <span>View on GitHub</span>
+        </a>
+      </div>
+    </div>
   </footer>
 
   <!-- PDF Modal -->
-  <div id="pdfModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
-    <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 h-4/5 flex flex-col overflow-hidden">
-      <div class="flex justify-between items-center p-4 border-b border-gray-300 dark:border-gray-700">
-        <h2 id="pdfTitle" class="text-lg font-semibold text-blue-600 dark:text-blue-300">PDF Preview</h2>
-        <button id="closeModal" class="text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+  <div id="pdfModal" 
+       class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden justify-center items-center z-50 p-4 animate-fade-in"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="pdfTitle">
+    <div class="glass-effect bg-white dark:bg-gray-900 rounded-3xl shadow-2xl w-full max-w-6xl h-[90vh] flex flex-col overflow-hidden transform transition-all duration-300 scale-95 modal-open">
+      <!-- Modal Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 p-4 md:p-6 border-b border-gray-200 dark:border-gray-700">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">📝</span>
+          <h2 id="pdfTitle" class="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">PDF Preview</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <a id="downloadLink" 
+             href="#" 
+             download
+             class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg"
+             aria-label="Download PDF">
+            <span>📥</span>
+            <span class="hidden md:inline">Download</span>
+          </a>
+          <button id="closeModal" 
+                  class="px-4 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold transition-all duration-300 transform hover:scale-105 active:scale-95 text-2xl leading-none shadow-lg"
+                  aria-label="Close modal">
+            &times;
+          </button>
+        </div>
       </div>
-      <iframe id="pdfViewer" src="" class="flex-grow w-full border-none"></iframe>
-      <div class="p-4 border-t border-gray-300 dark:border-gray-700 text-center">
-        <a id="downloadLink" href="#" download>
-          <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">⬇ Download</button>
-        </a>
+      
+      <!-- PDF Viewer -->
+      <div class="flex-grow overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+        <iframe id="pdfViewer" 
+                src="" 
+                class="w-full h-full border-none"
+                title="PDF Viewer">
+        </iframe>
+        <!-- Loading Spinner -->
+        <div id="pdfLoading" class="absolute inset-0 flex items-center justify-center bg-white dark:bg-gray-900">
+          <div class="text-center">
+            <div class="inline-block animate-spin text-6xl">🔄</div>
+            <p class="mt-4 text-gray-600 dark:text-gray-400">Loading PDF...</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
