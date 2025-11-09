@@ -1,12 +1,36 @@
 {
-  "name": "assignment-portal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "generate_assignments.js",
+  "name": "assignment-hub",
+  "version": "2.0.0",
+  "description": "A modern web portal for organizing and accessing engineering assignments with PDF preview, dark mode, and smart filtering.",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx serve",
+    "dev": "npx live-server",
+    "deploy": "gh-pages -d ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "assignments",
+    "engineering",
+    "student-portal",
+    "pdf-viewer",
+    "education",
+    "SPPU",
+    "assignment-manager"
+  ],
+  "author": {
+    "name": "Rishabh Dhami",
+    "email": "rishabhdhamI@gmail.com",
+    "url": "https://github.com/RishabhDhami"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RishabhDhami/Assignments.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RishabhDhami/Assignments/issues"
+  },
+  "homepage": "https://rishabhdhami.github.io/Assignments/",
+  "devDependencies": {},
+  "dependencies": {}
 }
