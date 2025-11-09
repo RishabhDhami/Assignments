@@ -1,10 +1,10 @@
-# 📚 Assignment Hub
+# 📚 Assignment Hub v3.0
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![Hope Bridge Style](https://img.shields.io/badge/design-Hope%20Bridge%20Hybrid-1976D2.svg)
 
-> A modern, feature-rich web portal for organizing and accessing engineering assignments with PDF preview, dark mode, and intelligent filtering.
+> A professional, multi-tab platform for engineering students to access assignments, notes, and study resources across colleges and branches. Inspired by modern web design with Hope Bridge aesthetics.
 
 ## 🌟 Live Demo
 
@@ -16,65 +16,100 @@
 
 **Rishabh Dhami**  
 📧 Email: rishabhdhamI@gmail.com  
-🎓 SPPU - Second Year Engineering  
+🎓 SPPU - Second Year ENTC  
 💻 GitHub: [@RishabhDhami](https://github.com/RishabhDhami)
 
 ---
 
-## ✨ Features
+## ⚡ What's New in v3.0
 
-### 🎨 **Modern UI/UX**
-- Glassmorphism design with smooth gradients
-- Bento grid layout for optimal content organization
-- Fluid animations and micro-interactions
-- Professional color-coded subject badges
-- Responsive mobile-first design
+### 🎨 **Hope Bridge Hybrid Design**
+- Clean, professional blue color scheme (#1976D2)
+- Verified resource badges
+- Trust indicators throughout
+- Modern card-based layouts
+- Smooth animations and transitions
+
+### 📑 **Multi-Tab Navigation**
+- **Home**: Landing page with featured resources and stats
+- **Browse**: Hierarchical filtering by college, branch, and subject
+- **Resources**: Filter by resource type (Assignments, Notes, Lab Manuals)
+- **My Collection**: View favorites, completed items, and recent views
+- **About**: Project information and features
+
+### 🎯 **Hierarchical Filtering**
+- Filter by College/University (SPPU, MIT, VIT, Mumbai University)
+- Filter by Branch (ENTC, CSE, IT, MECH, CIVIL)
+- Filter by Subject (COA, DLM, DM, DSA, etc.)
+- Filter by Resource Type (Assignments, Notes, Lab Manuals)
+
+### 📈 **Enhanced Features**
+- Multi-level resource categorization
+- Smart collection management
+- Recent views tracking
+- Progress tracking per subject
+- Verified resource indicators
+- Mobile-responsive design
+
+---
+
+## ✨ Key Features
+
+### 🎨 **Professional UI/UX**
+- Hope Bridge-inspired design language
+- Clean blue theme with accent colors
+- Card-based layouts with shadows
+- Verified badges on all resources
+- Smooth animations and micro-interactions
+- Fully responsive mobile-first design
 
 ### 🌓 **Advanced Dark Mode**
-- Seamless theme switching with localStorage persistence
-- Eye-friendly color schemes for extended study sessions
-- Automatic preference saving
+- Seamless theme switching
+- LocalStorage persistence
+- Optimized colors for both themes
+- Eye-friendly for extended study sessions
 
-### 🔍 **Intelligent Search & Filter**
-- Real-time fuzzy search across assignments
-- Multi-level filtering (All Subjects, Favorites, Completed)
-- Instant results with smooth transitions
-- Search highlighting
+### 🔍 **Smart Filtering System**
+- **Level 1**: College/University selection
+- **Level 2**: Branch selection
+- **Level 3**: Subject selection
+- **Level 4**: Resource type filtering
+- Real-time results
+- Empty state handling
 
-### ⭐ **Favorites & Bookmarks**
-- One-click favorite marking
+### ⭐ **Collection Management**
+- **Favorites**: One-click bookmarking
+- **Completed**: Track finished assignments
+- **Recent Views**: Last 10 accessed resources
 - Persistent storage across sessions
-- Quick access to important assignments
-- Visual favorite indicators
 
 ### 📊 **Statistics Dashboard**
-- Total assignments counter
+- Total resources counter
 - Favorites tracking
-- Subject-wise distribution
-- Animated progress indicators
+- Subject count
+- Completion progress
+- Animated counters
 
-### 📥 **Advanced PDF Management**
-- In-browser PDF preview with modern modal
+### 📥 **Enhanced PDF Viewer**
+- In-browser preview
+- Modern modal design
 - Direct download functionality
-- Responsive PDF viewer
 - Keyboard shortcuts (ESC to close)
+- Loading states
 
-### 📈 **Progress Tracking**
-- Mark assignments as completed
-- Visual completion status
-- Progress persistence
-- Quick status toggle
+### 💾 **Data Persistence**
+- LocalStorage for preferences
+- Favorites saved
+- Completion status saved
+- Recent views history
+- Theme preference saved
 
 ### ♿ **Accessibility**
 - WCAG 2.1 compliant
-- Keyboard navigation support
+- Keyboard navigation
 - Screen reader friendly
 - High contrast ratios
-
-### 💾 **Data Persistence**
-- LocalStorage for user preferences
-- Automatic state saving
-- Cross-session continuity
+- Focus indicators
 
 ---
 
@@ -99,89 +134,85 @@
    npx serve
    ```
 
-3. **Add your assignments**
-   - Create an `assignments/` folder structure
-   - Organize PDFs by subject: `assignments/[SUBJECT]/[FILE].pdf`
+3. **Add your resources**
+   - Create folder structure: `assignments/[SUBJECT]/`
+   - Add PDF files
    - Update the `assignments` array in `script.js`
-
----
-
-## 📁 Project Structure
-
-```
-Assignments/
-│
-├── index.html              # Main HTML structure
-├── script.js               # Core JavaScript functionality
-├── style.css               # Custom styles & animations
-├── package.json            # Project metadata
-├── README.md               # Documentation
-├── .gitignore             # Git ignore rules
-│
-└── assignments/           # PDF files organized by subject
-    ├── COA/
-    ├── DLM/
-    ├── DM/
-    ├── DSA/
-    └── [OTHER_SUBJECTS]/
-```
 
 ---
 
 ## 🎯 Usage Guide
 
-### Adding New Assignments
+### Navigation
 
-1. Place PDF files in the appropriate subject folder
-2. Update the `assignments` array in `script.js`:
+1. **Home Tab**
+   - View featured resources
+   - See overall statistics
+   - Quick access to browse
+
+2. **Browse Tab**
+   - Select college/university
+   - Choose engineering branch
+   - Filter by subject
+   - Browse filtered results
+
+3. **Resources Tab**
+   - Filter by type (Assignments, Notes, Labs)
+   - View all resources of selected type
+   - Quick access to materials
+
+4. **My Collection Tab**
+   - View favorite resources
+   - Check completed assignments
+   - Access recently viewed items
+
+5. **About Tab**
+   - Learn about the platform
+   - See key features
+   - Contact information
+
+### Adding New Resources
 
 ```javascript
 const assignments = [
   {
-    "title": "Your Assignment Title",
-    "subject": "SUBJECT_CODE",
-    "file": "assignments/SUBJECT_CODE/filename.pdf"
+    title: "Assignment Title",
+    subject: "SUBJECT_CODE",
+    file: "assignments/SUBJECT/filename.pdf",
+    college: "SPPU",
+    branch: "ENTC",
+    type: "assignment" // or "notes", "lab"
   },
-  // Add more assignments...
 ];
 ```
-
-### Keyboard Shortcuts
-
-- `ESC` - Close PDF modal
-- `Tab` - Navigate through elements
-- `Enter` - Open selected assignment
-- `Space` - Toggle favorites (when focused)
 
 ---
 
 ## 🛠️ Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Tailwind CSS 3.x (CDN)
-- **Icons**: Unicode Emojis & Custom Icons
+- **Styling**: Tailwind CSS 3.x
+- **Design**: Hope Bridge Hybrid Theme
 - **Storage**: LocalStorage API
 - **Hosting**: GitHub Pages
 
 ---
 
-## 🎨 Customization
+## 🎨 Design Philosophy
 
-### Color Scheme
+### Hope Bridge Inspiration
 
-Edit the Tailwind classes in `index.html` or add custom CSS in `style.css`:
+- **Trust & Credibility**: Verified badges, clean layouts
+- **Professional Aesthetics**: Blue color scheme, card-based design
+- **User Experience**: Clear navigation, intuitive filtering
+- **Accessibility**: High contrast, keyboard navigation
 
-```css
-:root {
-  --primary-color: #2563eb;    /* Blue */
-  --secondary-color: #10b981;  /* Green */
-  --accent-color: #f59e0b;     /* Amber */
-}
-```
+### Color Palette
 
-### Adding New Subjects
-
-The portal automatically detects subjects from your assignments array. Just add assignments with new subject codes!
+- **Primary Blue**: `#1976D2`
+- **Teal**: `#00BFA5`
+- **Orange**: `#FF6F00`
+- **Green**: `#4CAF50`
 
 ---
 
@@ -189,92 +220,23 @@ The portal automatically detects subjects from your assignments array. Just add 
 
 | Browser | Version | Status |
 |---------|---------|--------|
-| Chrome  | 90+     | ✅ Fully Supported |
-| Firefox | 88+     | ✅ Fully Supported |
-| Safari  | 14+     | ✅ Fully Supported |
-| Edge    | 90+     | ✅ Fully Supported |
-| Opera   | 76+     | ✅ Fully Supported |
-
----
-
-## 🐛 Known Issues
-
-- None currently! 🎉
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] Cloud sync for favorites & progress
-- [ ] Assignment deadline notifications
-- [ ] Collaborative notes feature
-- [ ] Assignment submission tracking
-- [ ] Integration with Google Drive/Dropbox
-- [ ] PWA support for offline access
-- [ ] Multi-language support
-- [ ] Assignment sharing via QR codes
-- [ ] Advanced analytics dashboard
-- [ ] Calendar integration
+| Chrome  | 90+     | ✅ Supported |
+| Firefox | 88+     | ✅ Supported |
+| Safari  | 14+     | ✅ Supported |
+| Edge    | 90+     | ✅ Supported |
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see below for details:
-
-```
-MIT License
-
-Copyright (c) 2025 Rishabh Dhami
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+MIT License - Copyright (c) 2025 Rishabh Dhami
 
 ---
 
-## 🤝 Contributing
+## 💬 Contact
 
-Contributions are welcome! Feel free to:
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 💬 Feedback & Support
-
-If you have any questions, suggestions, or issues:
-
-- 📧 Email: rishabhdhamI@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/RishabhDhami/Assignments/issues)
-- ⭐ Star this repo if you find it helpful!
-
----
-
-## 🙏 Acknowledgments
-
-- Tailwind CSS for the amazing utility-first framework
-- GitHub Pages for free hosting
-- The open-source community for inspiration
+📧 rishabhdhamI@gmail.com  
+🐛 [GitHub Issues](https://github.com/RishabhDhami/Assignments/issues)
 
 ---
 
@@ -283,7 +245,5 @@ If you have any questions, suggestions, or issues:
 ### ⭐ Star this repository if it helped you!
 
 **Made with ❤️ by Rishabh Dhami**
-
-![Visitor Count](https://visitor-badge.laobi.icu/badge?page_id=RishabhDhami.Assignments)
 
 </div>
