@@ -1,7 +1,24 @@
 /* ===========================
-   Assignment Hub - Premium CSS
+   Assignment Hub v3.0 - Hope Bridge Hybrid Theme
    by Rishabh Dhami
    =========================== */
+
+/* Hope Bridge Color Palette */
+:root {
+  --hope-blue: #1976D2;
+  --hope-blue-dark: #1565C0;
+  --hope-teal: #00BFA5;
+  --hope-orange: #FF6F00;
+  --hope-green: #4CAF50;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -18,227 +35,230 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  background: var(--hope-blue);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb, #7c3aed);
+  background: var(--hope-blue-dark);
 }
 
-/* Smooth Transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+/* Navigation Links */
+.nav-link {
+  @apply px-4 py-2 rounded-lg font-medium text-gray-700 dark:text-gray-300;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+  @apply transition-all duration-200;
 }
 
-/* Glassmorphism Effect */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+.nav-link.active {
+  @apply text-hope-blue dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20;
 }
 
-.dark .glass-effect {
-  background: rgba(17, 24, 39, 0.7);
-  border: 1px solid rgba(75, 85, 99, 0.3);
+.mobile-nav-link {
+  @apply px-4 py-3 rounded-lg text-left font-medium text-gray-700 dark:text-gray-300;
+  @apply hover:bg-gray-100 dark:hover:bg-gray-700;
+  @apply transition-all duration-200;
 }
 
-/* Statistics Cards */
-.stat-card {
-  @apply flex items-center gap-4 p-4 rounded-2xl;
-  @apply bg-white dark:bg-gray-800;
-  @apply border-2 border-gray-100 dark:border-gray-700;
-  @apply shadow-md hover:shadow-xl;
+/* Buttons */
+.btn-primary {
+  @apply px-6 py-3 rounded-lg font-semibold;
+  @apply bg-hope-blue hover:bg-blue-700;
+  @apply text-white;
+  @apply shadow-md hover:shadow-lg;
   @apply transition-all duration-300;
-  @apply transform hover:-translate-y-1 hover:scale-105;
-  @apply cursor-default;
+  @apply transform hover:-translate-y-0.5;
 }
 
-.stat-icon {
-  @apply w-14 h-14 rounded-xl;
+.btn-secondary {
+  @apply px-6 py-3 rounded-lg font-semibold;
+  @apply bg-white dark:bg-gray-700;
+  @apply text-hope-blue dark:text-blue-400;
+  @apply border-2 border-hope-blue dark:border-blue-400;
+  @apply hover:bg-blue-50 dark:hover:bg-gray-600;
+  @apply transition-all duration-300;
+}
+
+.btn-white {
+  @apply px-6 py-3 rounded-lg font-semibold;
+  @apply bg-white text-hope-blue;
+  @apply hover:bg-gray-100;
+  @apply transition-all duration-300;
+}
+
+/* Statistics Cards (Hope Bridge Style) */
+.stat-card-hope {
+  @apply bg-white dark:bg-gray-800;
+  @apply rounded-xl p-6;
+  @apply shadow-md hover:shadow-lg;
+  @apply border border-gray-100 dark:border-gray-700;
+  @apply text-center;
+  @apply transition-all duration-300;
+  @apply transform hover:-translate-y-1;
+}
+
+.stat-icon-hope {
+  @apply w-16 h-16 rounded-full;
+  @apply mx-auto;
   @apply flex items-center justify-center;
-  @apply shadow-lg transform group-hover:scale-110 group-hover:rotate-3;
-  @apply transition-all duration-300;
+  @apply shadow-lg;
 }
 
-.stat-label {
-  @apply text-xs font-medium text-gray-600 dark:text-gray-400;
-  @apply uppercase tracking-wider;
+.stat-value-hope {
+  @apply text-3xl font-bold;
+  @apply text-gray-900 dark:text-white;
 }
 
-.stat-value {
-  @apply text-2xl font-bold;
-  @apply bg-gradient-to-r from-blue-600 to-purple-600;
-  @apply dark:from-blue-400 dark:to-purple-400;
-  @apply bg-clip-text text-transparent;
+.stat-label-hope {
+  @apply text-sm text-gray-600 dark:text-gray-400;
+  @apply font-medium uppercase tracking-wide;
 }
 
-/* Assignment Cards */
-.assignment-card {
+/* Resource Cards */
+.resource-card {
   @apply bg-white dark:bg-gray-800;
-  @apply rounded-2xl shadow-lg;
-  @apply border-2 border-transparent;
-  @apply hover:border-blue-500 dark:hover:border-blue-400;
-  @apply p-6 text-center;
+  @apply rounded-xl p-6;
+  @apply shadow-md hover:shadow-xl;
+  @apply border-2 border-gray-100 dark:border-gray-700;
+  @apply hover:border-hope-blue dark:hover:border-blue-400;
   @apply transition-all duration-300;
-  @apply transform hover:-translate-y-2 hover:shadow-2xl;
+  @apply transform hover:-translate-y-1;
   @apply cursor-pointer;
-  @apply relative overflow-hidden;
-  animation: slideUp 0.5s ease-out;
-}
-
-.assignment-card::before {
-  content: '';
-  @apply absolute inset-0;
-  @apply bg-gradient-to-br from-blue-500/5 to-purple-500/5;
-  @apply opacity-0 hover:opacity-100;
-  @apply transition-opacity duration-300;
-  z-index: 0;
-}
-
-.assignment-card > * {
   @apply relative;
-  z-index: 1;
 }
 
-/* Subject Badges */
+/* Verified Badge */
+.verified-badge {
+  @apply absolute top-3 right-3;
+  @apply bg-green-50 dark:bg-green-900/30;
+  @apply border border-green-200 dark:border-green-800;
+  @apply rounded-full px-2 py-1;
+  @apply flex items-center gap-1;
+}
+
+.verified-badge span {
+  @apply text-xs font-semibold text-green-700 dark:text-green-300;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  @apply absolute top-3 left-3;
+  @apply w-10 h-10 rounded-full;
+  @apply bg-white dark:bg-gray-700;
+  @apply border-2 border-gray-200 dark:border-gray-600;
+  @apply flex items-center justify-center;
+  @apply text-xl;
+  @apply transition-all duration-300;
+  @apply hover:scale-110;
+  @apply cursor-pointer;
+  @apply shadow-md;
+  z-index: 10;
+}
+
+.favorite-btn.active {
+  @apply bg-yellow-50 dark:bg-yellow-900/30;
+  @apply border-yellow-400;
+  animation: heartbeat 0.5s ease;
+}
+
+/* Completion Badge */
+.completion-badge {
+  @apply absolute bottom-3 left-3;
+  @apply bg-green-500;
+  @apply text-white text-xs font-semibold;
+  @apply px-3 py-1 rounded-full;
+  @apply shadow-md;
+}
+
+/* Subject Badges - Hope Bridge Color Scheme */
 .subject-badge {
   @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
   @apply transition-all duration-300;
 }
 
 .subject-badge.COA {
-  @apply bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300;
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300;
 }
 
 .subject-badge.DLM {
-  @apply bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300;
+  @apply bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300;
 }
 
 .subject-badge.DM {
-  @apply bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300;
+  @apply bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300;
 }
 
 .subject-badge.DSA {
-  @apply bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300;
+  @apply bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300;
 }
 
-.subject-badge.OS {
-  @apply bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300;
+/* Tab Content */
+.tab-content {
+  @apply hidden;
+  animation: fadeIn 0.3s ease-in;
 }
 
-.subject-badge.SE {
-  @apply bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300;
+.tab-content.active {
+  @apply block;
 }
 
-.subject-badge.DBMS {
-  @apply bg-cyan-100 text-cyan-700 dark:bg-cyan-900 dark:text-cyan-300;
-}
-
-.subject-badge.CN {
-  @apply bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300;
-}
-
-/* Default for other subjects */
-.subject-badge:not(.COA):not(.DLM):not(.DM):not(.DSA):not(.OS):not(.SE):not(.DBMS):not(.CN) {
-  @apply bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300;
-}
-
-/* Buttons */
-.btn-primary {
-  @apply px-6 py-3 rounded-xl font-medium;
-  @apply bg-gradient-to-r from-blue-600 to-purple-600;
-  @apply hover:from-blue-700 hover:to-purple-700;
-  @apply text-white shadow-lg hover:shadow-xl;
-  @apply transition-all duration-300;
-  @apply transform hover:scale-105 active:scale-95;
-}
-
-.btn-secondary {
-  @apply px-4 py-2 rounded-xl font-medium;
-  @apply bg-gray-200 dark:bg-gray-700;
-  @apply hover:bg-gray-300 dark:hover:bg-gray-600;
-  @apply text-gray-800 dark:text-gray-100;
-  @apply transition-all duration-300;
-  @apply transform hover:scale-105 active:scale-95;
-}
-
-.btn-icon {
-  @apply w-10 h-10 rounded-xl;
-  @apply flex items-center justify-center;
-  @apply transition-all duration-300;
-  @apply transform hover:scale-110 hover:rotate-12;
-}
-
-/* Favorite Button */
-.favorite-btn {
-  @apply absolute top-3 right-3;
-  @apply w-10 h-10 rounded-full;
-  @apply flex items-center justify-center;
-  @apply bg-white/80 dark:bg-gray-800/80;
-  @apply backdrop-blur-sm;
-  @apply border-2 border-gray-200 dark:border-gray-600;
-  @apply transition-all duration-300;
-  @apply transform hover:scale-125;
+/* Filters */
+.filter-select {
+  @apply w-full px-4 py-3 rounded-lg;
+  @apply border-2 border-gray-200 dark:border-gray-700;
+  @apply bg-white dark:bg-gray-800;
+  @apply text-gray-900 dark:text-gray-100;
+  @apply focus:outline-none focus:ring-2 focus:ring-hope-blue/50 focus:border-hope-blue;
+  @apply transition-all duration-200;
   @apply cursor-pointer;
+}
+
+/* Resource Type Cards */
+.resource-type-card {
+  @apply bg-white dark:bg-gray-800;
+  @apply rounded-xl p-6;
   @apply shadow-md hover:shadow-lg;
-  z-index: 10;
-}
-
-.favorite-btn.active {
-  @apply bg-yellow-100 dark:bg-yellow-900/50;
-  @apply border-yellow-400;
-  animation: heartbeat 0.5s ease;
-}
-
-/* Completed Checkbox */
-.completed-checkbox {
-  @apply absolute top-3 left-3;
-  @apply w-6 h-6 rounded-md;
-  @apply flex items-center justify-center;
-  @apply bg-white/80 dark:bg-gray-800/80;
-  @apply backdrop-blur-sm;
-  @apply border-2 border-gray-300 dark:border-gray-600;
+  @apply border-2 border-gray-200 dark:border-gray-700;
+  @apply text-center;
   @apply transition-all duration-300;
   @apply cursor-pointer;
-  @apply hover:border-green-500;
-  z-index: 10;
 }
 
-.completed-checkbox.completed {
-  @apply bg-green-500 border-green-500;
+.resource-type-card.active {
+  @apply border-hope-blue dark:border-blue-400;
+  @apply bg-blue-50 dark:bg-blue-900/20;
 }
 
-/* Modal Animations */
-.modal-open {
-  animation: modalSlideIn 0.3s ease-out forwards;
+/* Collection View Cards */
+.collection-view-card {
+  @apply bg-white dark:bg-gray-800;
+  @apply rounded-xl p-6;
+  @apply shadow-md hover:shadow-lg;
+  @apply border-2 border-gray-200 dark:border-gray-700;
+  @apply text-center;
+  @apply transition-all duration-300;
+  @apply cursor-pointer;
 }
 
-@keyframes modalSlideIn {
+.collection-view-card.active {
+  @apply border-hope-blue dark:border-blue-400;
+  @apply bg-blue-50 dark:bg-blue-900/20;
+}
+
+/* About Cards */
+.about-card {
+  @apply bg-white dark:bg-gray-800;
+  @apply rounded-xl p-8;
+  @apply shadow-md;
+  @apply border border-gray-100 dark:border-gray-700;
+  @apply text-center;
+}
+
+/* Animations */
+@keyframes fadeIn {
   from {
-    transform: scale(0.9);
     opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* Heartbeat Animation */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.3); }
-  50% { transform: scale(1.1); }
-  75% { transform: scale(1.25); }
-}
-
-/* Slide Up Animation */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -246,132 +266,88 @@
   }
 }
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.3); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.25); }
 }
 
-/* Loading Spinner */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stat-card-hope {
+    @apply p-4;
+  }
+  
+  .stat-icon-hope {
+    @apply w-12 h-12;
+  }
+  
+  .stat-value-hope {
+    @apply text-2xl;
+  }
+  
+  .resource-card {
+    @apply p-4;
+  }
+}
+
+/* Loading State */
+.loading {
+  @apply animate-pulse;
+}
+
+/* Empty State */
+.empty-state {
+  @apply text-center py-16;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Hover Effects */
+.hover-lift {
+  @apply transition-transform duration-300;
+  @apply hover:-translate-y-1;
 }
 
 /* Focus Styles for Accessibility */
 button:focus-visible,
 a:focus-visible,
-input:focus-visible,
 select:focus-visible {
-  @apply outline-none ring-4 ring-blue-500/30;
+  @apply outline-none ring-4 ring-hope-blue/30;
 }
 
-/* Gradient Text */
-.gradient-text {
-  @apply bg-gradient-to-r from-blue-600 to-purple-600;
-  @apply dark:from-blue-400 dark:to-purple-400;
-  @apply bg-clip-text text-transparent;
-}
-
-/* Responsive Grid Adjustments */
-@media (max-width: 640px) {
-  .assignment-card {
-    @apply p-4;
-  }
-  
-  .stat-card {
-    @apply gap-2 p-3;
-  }
-  
-  .stat-icon {
-    @apply w-12 h-12;
-  }
-}
-
-/* Print Styles */
-@media print {
-  header, footer, .glass-effect {
-    background: white !important;
-  }
-  
-  .assignment-card {
-    break-inside: avoid;
-  }
-}
-
-/* Hover Effects for Touch Devices */
-@media (hover: none) {
-  .assignment-card:hover {
-    transform: none;
-  }
-  
-  .stat-card:hover {
-    transform: none;
-  }
-}
-
-/* Dark Mode Specific Enhancements */
-.dark body {
-  background-attachment: fixed;
-}
-
-/* Selection Style */
+/* Selection */
 ::selection {
-  @apply bg-blue-500 text-white;
+  @apply bg-hope-blue text-white;
 }
 
 .dark ::selection {
   @apply bg-blue-400 text-gray-900;
 }
 
-/* PDF Loading State */
-#pdfLoading {
-  transition: opacity 0.3s ease;
+/* Modal Overlay */
+#pdfModal {
+  backdrop-filter: blur(8px);
 }
 
-#pdfLoading.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Empty State */
-#emptyState {
-  @apply animate-fade-in;
-}
-
-/* Skeleton Loading (for future use) */
-.skeleton {
-  @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg;
-}
-
-/* Tooltip (for future use) */
-.tooltip {
-  @apply absolute invisible opacity-0;
-  @apply bg-gray-900 dark:bg-gray-100;
-  @apply text-white dark:text-gray-900;
-  @apply text-sm px-3 py-1 rounded-lg;
-  @apply transition-all duration-300;
-  @apply shadow-lg;
-  @apply pointer-events-none;
-  z-index: 1000;
-}
-
-.tooltip-parent:hover .tooltip {
-  @apply visible opacity-100;
-}
-
-/* Badge Pulse Effect */
-.badge-pulse {
-  animation: badgePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-@keyframes badgePulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
+/* Print Styles */
+@media print {
+  header, footer {
+    display: none;
   }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+  
+  .resource-card {
+    break-inside: avoid;
   }
 }
